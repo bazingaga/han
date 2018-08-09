@@ -1,0 +1,17 @@
+.container{
+  width: 60%;
+  margin: 0 auto;
+}
+#text{
+  margin-top: 10%;
+  width: 100%;
+  border: 0;
+  outline: none;
+  /* height: auto; */
+  line-height: 30px;
+  font-size: 22px;
+  font-weight: 300;
+  caret-color: #aaa;
+  height: 80%;
+  resize:none;
+}
