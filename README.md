@@ -14,6 +14,7 @@
 - 字体？
 - command+center换两行
 - 设计图标
+- 自动换行word-break:break-all
 
 
 
