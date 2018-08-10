@@ -35,3 +35,12 @@ li{
   height: 80%;
   resize:none;
 }
+.message{
+  position: fixed;
+  top: 30px;
+  left: 48%;
+  padding: 10px 15px;
+  color: white;
+  font-weight: 600;
+  background-color: #494444;
+}

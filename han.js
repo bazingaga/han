@@ -38,10 +38,18 @@ $(function(){
   }
 
   function copy(){
-    const input = document.querySelector('#text');
+    if($('#copy_message')){
+      $('#copy_message').remove();
+    }
+    var input = document.querySelector('#text');
     input.select();
     try{
       document.execCommand('copy');
+      var copy_message = $('<div>文字已复制</div>');
+      copy_message.attr('id','copy_message');
+      copy_message.addClass('message');
+      copy_message.appendTo('#panel');
+      copy_message.fadeOut(3000);
     }
     catch(err){
       console.log(err);
@@ -90,7 +98,7 @@ $(function(){
       $('#text').val(text);
     }
   });
-  
+
   $('#text').each(function () {
     this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
   }).on('input', function () {
