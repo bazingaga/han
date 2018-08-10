@@ -75,6 +75,22 @@ $(function(){
     });
   }
 
+  function insert_space(text) {
+    // 英文、數字、符號 ([a-z0-9~!@#&;=_\$\%\^\*\-\+\,\.\/(\\)\?\:\'\"\[\]\(\)])
+
+    // 中文在前
+    text = text.replace(/([\u4E00-\u9FA5])([A-Za-z@#&;=_\[\$\%\^\*\-\+\(\/])/ig, '$1 $2');
+
+    // 中文在後
+    text = text.replace(/([A-Za-z#!~&;=_\]\,\.\:\?\$\%\^\*\-\+\)\/])([\u4E00-\u9FA5])/ig, '$1 $2');
+
+    // 考慮增加 - + / * 前後的空白
+    text = text.replace(/([0-9])([\u4E00-\u9FA5A-Za-z@#&;=_\[\$\%\^\*\-\+\(\/])/ig, '$1 $2');
+    text = text.replace(/([\u4E00-\u9FA5A-Za-z#!~&;=_\]\,\.\:\?\$\%\^\*\-\+\)\/])([0-9])/ig, '$1 $2');
+
+    return text;
+  }
+
   $('#text').keyup(function(e){
     //win10默认输入法-todo
     if(e.which == 229){
@@ -86,6 +102,7 @@ $(function(){
       var preText = $('#text').val().substring(0, lastTag);
       var text = $('#text').val().substring(lastTag, curTag);
       console.log(text);
+      /*
       var array = text.match(/[A-Za-z\s+]+/g);
       console.log(array);
       if(array != null){
@@ -105,6 +122,9 @@ $(function(){
         }
         $('#text').val(preText + text);
       }
+      */
+      text = insert_space(text);
+      $('#text').val(preText + text);
       curTag = $('#text').val().length;
       pos.push(curTag);
       console.log(pos);
