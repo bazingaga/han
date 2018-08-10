@@ -17,16 +17,20 @@ $(function(){
       return mixture();
     }
     else if(e.ctrlKey && e.keyCode == 77){
-        return copy();
+      return copy();
     }
     else if(e.ctrlKey && e.keyCode == 81){
-        return quotation();
+      return quotation();
     }
     else if(e.ctrlKey && e.keyCode == 69){
-        return convert();
+      return convert();
     }
     else if(e.ctrlKey && e.keyCode == 87){
-        return save_img();
+      return save_img();
+    }
+    else if(e.ctrlKey && e.keyCode == 13){
+      $('#text').height($('#text').height() + 60);
+      $('#text').val($('#text').val() + '\n\n');
     }
   };
 
@@ -86,8 +90,11 @@ $(function(){
       console.log(array);
       if(array != null){
         for(var i = 0; i < array.length; i++){
-          if(text.indexOf(array[i]) + array[i].length + 1 == curTag){
-              text = text.replace(array[i], " " + array[i].replace(/(^\s*)|(\s*$)/g, ""));
+          if(array[i].indexOf('\n') != -1) continue;
+          if(text.indexOf(array[i]) + array[i].length + lastTag + 1 == curTag){
+              if(pos[pos.length - 1] == text.indexOf(array[i]) - 1) continue;
+              if(text.indexOf(array[i]) == 0 && lastTag == 0) text = text.replace(array[i], array[i].replace(/(^\s*)|(\s*$)/g, ""));
+              else text = text.replace(array[i], " " + array[i].replace(/(^\s*)|(\s*$)/g, ""));
           }
           else if(text.indexOf(array[i]) == 0 && lastTag == 0){
               text = text.replace(array[i], array[i].replace(/(^\s*)|(\s*$)/g, "") + " ");
