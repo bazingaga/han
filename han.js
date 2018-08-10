@@ -4,6 +4,7 @@ $(function(){
 
   var lastTag = 0;
   var curTag = 0;
+  var pos = [0];
 
   function isChinese(temp){
     var re = /[^\u4e00-\u9fa5]/;
@@ -26,7 +27,7 @@ $(function(){
           if(array[i].length != 0){
             if(text.indexOf(" " + array[i] + " ") != -1) continue;
             else {
-              if (text.indexOf(array[i]) == 0 && lastTag == 0){
+              if (text.indexOf(array[i]) == 0 && lastTag == 0 && curTag != array[i].length + 1){
                 text = text.replace(array[i], array[i] + " ");
                 continue;
               }
@@ -43,22 +44,44 @@ $(function(){
       }
       $('#text').val(preText + text);
       curTag = $('#text').val().length;
+      pos.push(curTag);
+      console.log(pos);
     }
     else if(e.which == 8){
-      curTag = $('#text').val().length;
+      var len = pos.length;
+      if($('#text').val().length < pos[len - 1]){
+        var index = -1;
+        for(var i = 0; i < pos.length; i++){
+          if(pos[i] >= curTag){
+            lastTag = pos[i - 1];
+            index = i;
+            break;
+          }
+        }
+        if(index > 0){
+          pos.splice(index, len - index);
+          curTag = lastTag;
+        }
+        console.log(pos);
+      }
     }
   });
+
+  
+
+  $('#text').each(function () {
+    this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+  }).on('input', function () {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+  });
+
 });
 
 
 
 
 
-$('textarea').each(function () {
-  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
-}).on('input', function () {
-  this.style.height = 'auto';
-  this.style.height = (this.scrollHeight) + 'px';
-});
+
 
 
