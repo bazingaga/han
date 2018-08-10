@@ -2,6 +2,26 @@
   width: 60%;
   margin: 0 auto;
 }
+.bar{
+  width: 60px;
+  height: 300px;
+  background-color: transparent;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+li{
+  float: left;
+  list-style-type:none;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.logo_group{
+  position: absolute;
+  left: 10px;
+  top: 0;
+  padding: 0;
+}
 #text{
   margin-top: 10%;
   width: 100%;

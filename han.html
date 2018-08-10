@@ -8,11 +8,22 @@
   <title>漢青</title>
 </head>
 <body>
-<div class="container">
+<div class="container" id="panel">
   <textarea id="text"></textarea>
+  <div class="bar">
+    <ul class="logo_group">
+      <li id="complete" title="ctrl + o"><img src="image/complete.png" width="40px"></li>
+      <li id="copy" title="ctrl + m"><img src="image/copy.png" width="40px"></li>
+      <li id="quotation" title="ctrl + q"><img src="image/quotation.png" width="40px"></li>
+      <li id="convert" title="ctrl + e"><img src="image/simple_to_comflex.png" width="40px"></li>
+      <li id="image" title="ctrl + w"><img src="image/convert_img.png" width="40px"></li>
+    </ul>
+  </div>
+  <a id="download" href="#" style="background: transparent;"></a>
 </div>
 
 </body>
+<script src="lib/html2canvas.min.js"></script>
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.7/han.min.js"></script>-->
 <script src="han.js"></script>
 
