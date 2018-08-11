@@ -107,7 +107,28 @@ $(function(){
   });
 
 });
+//添加文字计数
+ var txt0 = document.getElementById("text");
+    var txtNum0 = document.getElementById("txtNum0");
+    var chnIpt0 = false;
 
+    txt0.addEventListener("keyup",function(){
+        if(chnIpt0 ==false){
+            countTxt();
+        }
+    });
+    txt0.addEventListener("compositionstart",function(){
+        chnIpt0 = true;
+    })
+    txt0.addEventListener("compositionend",function(){
+        chnIpt0 = false;
+        countTxt();
+    })
+    function countTxt(){
+        if(chnIpt0 == false){
+            txtNum0.textContent = txt0.value.length;
+        }
+    }
 
 
 
