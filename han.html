@@ -2,14 +2,14 @@
 <html lang="zh-CN" class="han-la">
 <head>
   <meta charset="UTF-8">
-  <!--<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.7/han.min.css">-->
   <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="han.css">
   <title>漢青</title>
 </head>
 <body>
 <div class="container" id="panel">
-  <textarea id="text"></textarea>
+  <input id="temp-copy-area" type="text"/>
+  <div id="text" class="textarea_bro" contenteditable="true"><br/></div>
   <span id="txtNum0">0</span>
   <div class="bar">
     <ul class="logo_group">
@@ -22,8 +22,6 @@
   </div>
   <a id="download" href="#" style="background: transparent;"></a>
 </div>
-<!-- 用div模拟textarea -->
-<div class="textarea_bro" contenteditable="true"><br /></div>
 
 
 

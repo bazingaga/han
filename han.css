@@ -1,6 +1,7 @@
 .container{
   width: 60%;
   margin: 0 auto;
+  position: relative;
 }
 .bar{
   width: 60px;
@@ -54,15 +55,18 @@ li{
     margin-left: auto; 
     margin-right: auto; 
     padding: 3px; 
-    outline: 0; 
-
+    outline: 0;
     font-size: 12px; 
     line-height: 24px;
-    padding: 2px;
     word-wrap: break-word;
     overflow-x: hidden;
     overflow-y: hidden;
- 
-
-
+}
+#temp-copy-area {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
